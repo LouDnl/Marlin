@@ -45,6 +45,9 @@ enum processID : uint8_t {
   Prepare,
   Control,
   Leveling,
+  AUX, // Smith3d.com addition
+  Refuel, // Smith3d.com addition
+  ZTool, // Smith3d.com addition
   PrintProcess,
   AxisMove,
   TemperatureID,
@@ -75,11 +78,18 @@ enum processID : uint8_t {
   Move_X,
   Move_Y,
   Move_Z,
+  Move1, // Smith3d.com addition
+  Move2, // Smith3d.com addition
+  Move3, // Smith3d.com addition
+  Move4, // Smith3d.com addition
+  Move5, // Smith3d.com addition
+  Homeoffset, // Smith3d.com addition
+  HomeoffsetRT, // Smith3d.com addition
   #if HAS_HOTEND
     Extruder,
+    Extruder_Refuel, // Smith3d.com addition	
     ETemp,
   #endif
-  Homeoffset,
   #if HAS_HEATED_BED
     BedTemp,
   #endif
@@ -302,6 +312,7 @@ void ICON_Stop(bool show);
 
 void Popup_Window_Resume();
 void Popup_Window_Home(const bool parking=false);
+void Popup_Window_Aux(void); // Smith3d.com addition							
 void Popup_Window_Leveling();
 
 void Goto_PrintProcess();
@@ -314,6 +325,7 @@ void HMI_Move_Z();
 void HMI_Move_E();
 
 void HMI_Zoffset();
+void HMI_ZoffsetRT();  // Smith3d.com addition					 
 
 TERN_(HAS_HOTEND,     void HMI_ETemp());
 TERN_(HAS_HEATED_BED, void HMI_BedTemp());
