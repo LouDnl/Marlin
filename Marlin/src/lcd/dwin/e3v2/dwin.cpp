@@ -1351,8 +1351,9 @@ void HMI_Move_Z() {
           dwin_zoffset = HMI_ValueStruct.offset_value / 100.0f; // Smith3D.com addition
           probe.offset.z = dwin_zoffset; // Smith3D.com addition
             #if EITHER(BABYSTEP_ZPROBE_OFFSET, JUST_BABYSTEP) // Smith3D.com addition
-              if ( (ENABLED(BABYSTEP_WITHOUT_HOMING) || all_axes_trusted()) && (ENABLED(BABYSTEP_ALWAYS_AVAILABLE) || printer_busy()) )// Smith3D.com addition & LouD bugfix
-                babystep.add_mm(Z_AXIS, dwin_zoffset - last_zoffset);// Smith3D.com addition
+              //if ( (ENABLED(BABYSTEP_WITHOUT_HOMING) || all_axes_trusted()) && (ENABLED(BABYSTEP_ALWAYS_AVAILABLE) || printer_busy()) )// Smith3D.com addition & LouD bugfix
+                //babystep.add_mm(Z_AXIS, dwin_zoffset - last_zoffset);// Smith3D.com addition
+			  if (BABYSTEP_ALLOWED()) babystep.add_mm(Z_AXIS, dwin_zoffset - last_zoffset); // bugfix LouD from original repo
             #endif// Smith3D.com addition
         #endif
         checkkey = HMI_ValueStruct.show_mode == -4 ? Prepare : Tune;
@@ -3581,6 +3582,7 @@ void HMI_Info() {
       checkkey = Control;
       //select_control.set(CONTROL_CASE_INFO);
 	  select_control.reset(); //To fix a UI bug where back and causing Text display swifted	// Smith3D.com addition
+        index_control = MROWS; // Smith3D.com addition
       Draw_Control_Menu();
     #else
       select_page.set(3);
@@ -4048,6 +4050,8 @@ void EachMomentUpdate() {
           if (encoder_diffState == ENCODER_DIFF_ENTER) {
             recovery_flag = false;
             if (HMI_flag.select_flag) break;
+            gcode.process_subcommands_now_P(PSTR("M21"));//Reload SD Card // Smith3D
+            recovery.purge(); // Smith3D  
             TERN_(POWER_LOSS_RECOVERY, queue.inject_P(PSTR("M1000C")));
             HMI_StartFrame(true);
             return;
@@ -4074,6 +4078,9 @@ void DWIN_HandleScreen() {
     case MainMenu:        HMI_MainMenu(); break;
     case SelectFile:      HMI_SelectFile(); break;
     case Prepare:         HMI_Prepare(); break;
+    case AUX:             HMI_AUX(); break; // Smith3D  
+    case ZTool:           HMI_ZTool(); break; // Smith3D  
+    case Refuel:          HMI_Refuel(); break; // Smith3D
     case Control:         HMI_Control(); break;
     case Leveling:        break;
     case PrintProcess:    HMI_Printing(); break;
@@ -4098,10 +4105,12 @@ void DWIN_HandleScreen() {
     case Move_Z:          HMI_Move_Z(); break;
     #if HAS_HOTEND
       case Extruder:      HMI_Move_E(); break;
+      case Extruder_Refuel:      HMI_Move_E_Refuel(); break; // Smith3D  											 
       case ETemp:         HMI_ETemp(); break;
     #endif
     #if EITHER(HAS_BED_PROBE, BABYSTEPPING)
       case Homeoffset:    HMI_Zoffset(); break;
+      case HomeoffsetRT:          HMI_ZoffsetRT(); break; // Smith3D 		  
     #endif
     #if HAS_HEATED_BED
       case BedTemp:       HMI_BedTemp(); break;
