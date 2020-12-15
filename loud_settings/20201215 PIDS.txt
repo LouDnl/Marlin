@@ -1,0 +1,22 @@
+Recv: PID Autotune finished! Put the last Kp, Ki and Kd constants from below into Configuration.h
+Recv: #define DEFAULT_Kp 25.61
+Recv: #define DEFAULT_Ki 2.07
+Recv: #define DEFAULT_Kd 79.04
+
+Send: M303 E-1 S60 U1
+Recv: PID Autotune start
+Recv:  bias: 127 d: 127 min: 59.79 max: 60.19 T:23.75 /0.00 B:59.79 /0.00 @:0 B@:127
+Recv:  bias: 127 d: 127 min: 59.73 max: 60.19 T:23.75 /0.00 B:59.79 /0.00 @:0 B@:127
+Recv:  bias: 127 d: 127 min: 59.79 max: 60.20 Ku: 798.35 Tu: 10.26
+Recv:  No overshoot
+Recv:  Kp: 159.67 Ki: 31.12 Kd: 546.12
+Recv:  bias: 117 d: 117 min: 59.79 max: 60.37 Ku: 514.84 Tu: 11.22
+Recv:  No overshoot
+Recv:  Kp: 102.97 Ki: 18.35 Kd: 385.17
+Recv:  bias: 117 d: 117 min: 59.82 max: 60.23 Ku: 720.05 Tu: 10.26
+Recv:  No overshoot
+Recv:  Kp: 144.01 Ki: 28.07 Kd: 492.56
+Recv: PID Autotune finished! Put the last Kp, Ki and Kd constants from below into Configuration.h
+Recv: #define DEFAULT_bedKp 144.01
+Recv: #define DEFAULT_bedKi 28.07
+Recv: #define DEFAULT_bedKd 492.56

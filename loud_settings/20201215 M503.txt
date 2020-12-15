@@ -1,0 +1,57 @@
+Send: M503
+Recv: echo:  G21    ; Units in mm (mm)
+Recv: 
+Recv: echo:; Filament settings: Disabled
+Recv: echo:  M200 S0 D1.75
+Recv: echo:; Steps per unit:
+Recv: echo: M92 X80.00 Y80.00 Z400.00 E103.06
+Recv: echo:; Maximum feedrates (units/s):
+Recv: echo:  M203 X500.00 Y500.00 Z12.00 E120.00
+Recv: echo:; Maximum Acceleration (units/s2):
+Recv: echo:  M201 X500.00 Y500.00 Z500.00 E10000.00
+Recv: echo:; Acceleration (units/s2): P<print_accel> R<retract_accel> T<travel_accel>
+Recv: echo:  M204 P500.00 R1500.00 T500.00
+Recv: echo:; Advanced: B<min_segment_time_us> S<min_feedrate> T<min_travel_feedrate> X<max_x_jerk> Y<max_y_jerk> Z<max_z_jerk> E<max_e_jerk>
+Recv: echo:  M205 B20000.00 S0.00 T0.00 X8.00 Y8.00 Z0.20 E2.50
+Recv: echo:; Home offset:
+Recv: echo:  M206 X0.00 Y0.00 Z0.00
+Recv: echo:; Auto Bed Leveling:
+Recv: echo:  M420 S0 Z0.00
+Recv: echo:  G29 W I0 J0 Z0.06450
+Recv: echo:  G29 W I1 J0 Z0.03250
+Recv: echo:  G29 W I2 J0 Z0.02250
+Recv: echo:  G29 W I3 J0 Z0.02900
+Recv: echo:  G29 W I4 J0 Z0.07750
+Recv: echo:  G29 W I0 J1 Z0.01650
+Recv: echo:  G29 W I1 J1 Z-0.01500
+Recv: echo:  G29 W I2 J1 Z0.01400
+Recv: echo:  G29 W I3 J1 Z0.04350
+Recv: echo:  G29 W I4 J1 Z0.13500
+Recv: echo:  G29 W I0 J2 Z-0.02150
+Recv: echo:  G29 W I1 J2 Z-0.03250
+Recv: echo:  G29 W I2 J2 Z0.00350
+Recv: echo:  G29 W I3 J2 Z0.05150
+Recv: echo:  G29 W I4 J2 Z0.13850
+Recv: echo:  G29 W I0 J3 Z0.02850
+Recv: echo:  G29 W I1 J3 Z0.00100
+Recv: echo:  G29 W I2 J3 Z0.02600
+Recv: echo:  G29 W I3 J3 Z0.06850
+Recv: echo:  G29 W I4 J3 Z0.14350
+Recv: echo:  G29 W I0 J4 Z0.08700
+Recv: echo:  G29 W I1 J4 Z0.06350
+Recv: echo:  G29 W I2 J4 Z0.08000
+Recv: echo:  G29 W I3 J4 Z0.10850
+Recv: echo:  G29 W I4 J4 Z0.17250
+Recv: echo:; Material heatup parameters:
+Recv: echo:  M145 S0 H200 B60 F255
+Recv: echo:  M145 S1 H225 B75 F0
+Recv: echo:; PID settings:
+Recv: echo:  M301 P22.44 I1.84 D68.35
+Recv: echo:  M304 P161.73 I31.53 D553.12
+Recv: echo:; Power-Loss Recovery:
+Recv: echo:  M413 S1
+Recv: echo:; Z-Probe Offset (mm):
+Recv: echo:  M851 X-42.00 Y-10.00 Z-1.46
+Recv: echo:; Filament load/unload lengths:
+Recv: echo:  M603 L0.00 U100.00
+Recv: ok
